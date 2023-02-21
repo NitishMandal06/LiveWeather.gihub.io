@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Poppins', sans-serif ;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.container-1{
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    background: #000;
+    align-items: center;
+    width: 100%;
+}
+.location{
+    color: white;
+    border-radius: 2rem;
+    text-align: center;
+    
+}
+#logo{
+    color: tomato;
+    padding: 1rem;
+}
+.container-1 img{
+    height: 10rem;
+    padding: 1rem;
+}
+input[type=search]{
+    height: 3rem;
+    width: 15rem;
+    color: #555;
+    border: none;
+    outline: none;
+}
+#current-time{
+    color: white;
+    margin-top: 6rem;
+    padding: 3rem;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.main{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+
+}
+
+.quote{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+.deg{
+    font-size: 4rem;
+    padding: 2rem;
+}
+button{
+    width: 1rem;
+    height: 3rem;
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+}
+.info p{
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 450px){
+    body{
+        background: #000;
+    }
+    input[type=search]{
+        height: 3rem;
+        width: 9rem;
+    }   
+    .main{
+        position: absolute;
+        margin-left: 2rem;
+        color: white;
+    }
+    .info h3{
+        font-size: 1.6rem;
+    }
+    .info p{
+        font-size: 1rem;
+    }
+}

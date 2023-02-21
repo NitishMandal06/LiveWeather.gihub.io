@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/e3132c2b49.js" crossorigin="anonymous"></script>
+  <title>Live Weather</title>
+</head>
+<body>
+
+<div class="container-1"> 
+  <div class="location-icon">
+    <form action="">
+      <i class="fa-solid fa-location-dot" id="logo"></i>
+      <input type="search" id="search" class="location" placeholder="Search Location">
+    <button type="submit" id="submit"><i class="fa-solid fa-magnifying-glass"></i></button></form>
+</div>
+  <span class="clock"> <p id="current-time">12:00:00</p><br></span>
+  <img src="images/cloudy.png">
+</div>
+<div class="main">
+  <div class="quote"><h3>Ohh! It's seems A sunny day, We wish you Good Day 🌼</h3></div>
+  <div class="info" id="weather"><h3 class="deg">32</span>&deg;</h3><br> <p>Clear</p><p class="short">Humidity :12%</p></div>
+</div>
+<!-- <-------------------------script-----------------------------------------> 
+<script>
+  let time = document.getElementById("current-time");
+
+setInterval(() =>{
+  let d = new Date();
+time.innerHTML = d.toLocaleTimeString();
+
+},1000)
+const API_key = '2b7793343a6fa849e945e794e360c044';
+const form = document.querySelector("form")
+const search = document.querySelector("#search")
+const weather = document.querySelector("#weather")
+
+
+
+var getweather= async(city) => {
+    const url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}&units=matric`
+    const response = await fetch(url);
+    const data = await response.json()
+    showweather(data)
+}
+var showweather = (data) => {
+  weather.innerHTML = `
+  <div class="info" id="weather"><h3 class="deg">${(data.main.temp - 273).toFixed(2)}</span>&deg;C </h3><br> <p>${data.weather[0].main}</p><p class="short">Humidity : ${data.main.humidity}%</p></div>
+  `
+}
+
+form.addEventListener(
+"submit",
+function(event) {
+    getweather(search.value)
+    event.preventDefault();
+}
+)
+ </script>
+</body>
+</html>
